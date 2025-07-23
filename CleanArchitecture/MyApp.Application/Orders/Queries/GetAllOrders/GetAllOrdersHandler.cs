@@ -12,7 +12,6 @@ namespace MyApp.Application.Orders.Queries.GetAllOrders
         {
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
         }
-/*************  ✨ Windsurf Command ⭐  *************/
         /// <summary>
         /// Handles the <see cref="GetAllOrdersRequestDto"/> and returns <see cref="GetAllOrdersResponseDto"/>.
         /// </summary>
