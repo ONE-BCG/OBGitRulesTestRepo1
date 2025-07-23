@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using MyApp.Application.Orders.Queries.GetOrdersById;
 using MyApp.Application.Orders.Commands.AddOI;
 using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Linq;
 
 namespace MyApp.WebAPI.Controller
 {
@@ -23,9 +25,22 @@ namespace MyApp.WebAPI.Controller
         [HttpGet("GetAllOrders")]
         public async Task<IActionResult> GetAll()
         {
-            var request = new GetAllOrdersRequestDto();
-            var response = await _mediator.Send(request);
-            return Ok(response);
+            try
+            {
+                var request = new GetAllOrdersRequestDto();
+                var response = await _mediator.Send(request);
+                
+                if (response?.Orders == null || !response.Orders.Any())
+                {
+                    return Ok(new { Message = "No orders found", Data = new List<object>() });
+                }
+                
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while retrieving orders", Error = ex.Message });
+            }
         }
 
         [HttpGet("GetOrdersById")]
@@ -33,11 +48,25 @@ namespace MyApp.WebAPI.Controller
         {
             if (id <= 0) // check for valid id value
             {
-                return BadRequest("Invalid ID provided.");
+                return BadRequest(new { Message = "Invalid ID provided. ID must be greater than 0." });
             }
-            var request = new GetOrdersByIdRequestDto { Id = id };
-            var response = await _mediator.Send(request);
-            return Ok(response);
+
+            try
+            {
+                var request = new GetOrdersByIdRequestDto { Id = id };
+                var response = await _mediator.Send(request);
+                
+                if (response?.Order == null)
+                {
+                    return NotFound(new { Message = $"Order with ID {id} not found." });
+                }
+                
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while retrieving the order", Error = ex.Message });
+            }
         }
 
         [HttpPost("AddOrderInfo")]
