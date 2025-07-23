@@ -9,6 +9,14 @@ namespace MyApp.Application.Orders.Queries.GetOrdersById
     {
         private readonly IOrderRepository _orderRepository;
 
+/*************  ✨ Windsurf Command ⭐  *************/
+/// <summary>
+/// Initializes a new instance of the <see cref="GetOrdersByIdHandler"/> class.
+/// </summary>
+/// <param name="orderRepository">The order repository to access order data.</param>
+/// <exception cref="ArgumentNullException">Thrown when orderRepository is null.</exception>
+
+/*******  a433af7a-5705-4c02-9389-725e6604e80e  *******/
         public GetOrdersByIdHandler(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
