@@ -7,22 +7,33 @@ using MyApp.Infrastructure.DataAccess.OrderRepository;
 
 namespace MyApp.Application.Orders.Commands.AddOI
 {
-    public class AddOIHandler: IRequestHandler<AddOIRequestDto, AddOIResponseDto>
+    /// Handler for processing AddOIRequestDto.
+    /// This class handles the command to add order information
+    /// by calling the appropriate method in the order repository.
+    public class AddOIHandler : IRequestHandler<AddOIRequestDto, AddOIResponseDto>
     {
         private readonly IOrderRepository _orderRepository;
 
+        /// Constructor that injects the order repository dependency.
         public AddOIHandler(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
         }
 
+        /// <summary>
+        /// Handles the AddOIRequestDto by saving order information to the database.
+        /// </summary>
+        /// <param name="">The request containing order information to be added.</param>
+        /// <param name="">Token to cancel the operation.</param>
+        /// <returns>Returns the response containing the newly created order info ID.</returns>
+
         public async Task<AddOIResponseDto> Handle(AddOIRequestDto request, CancellationToken cancellationToken)
         {
-            var order = await _orderRepository.AddOrderInfoAsync( request.OrderInfo);
+            var order = await _orderRepository.AddOrderInfoAsync(request.OrderInfo);
 
             return new AddOIResponseDto
             {
-                OrderInformationId = order               
+                OrderInformationId = order
             };
         }
     }
