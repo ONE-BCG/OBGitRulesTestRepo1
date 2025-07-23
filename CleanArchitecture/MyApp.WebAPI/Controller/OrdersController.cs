@@ -31,7 +31,7 @@ namespace MyApp.WebAPI.Controller
         [HttpGet("GetOrdersById")]
         public async Task<IActionResult> GetOrders(int id)
         {
-            if (id <= 0)
+            if (id <= 0) // check for valid id value
             {
                 return BadRequest("Invalid ID provided.");
             }
