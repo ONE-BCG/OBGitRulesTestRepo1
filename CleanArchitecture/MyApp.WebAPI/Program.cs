@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using MyApp.Domain.Models;
 
+// Create a builder object to configure and initialize the web application.
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
