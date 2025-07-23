@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using MyApp.Domain.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args); //builder comment
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
