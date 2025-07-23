@@ -39,7 +39,8 @@ namespace MyApp.WebAPI.Controller
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while retrieving orders", Error = ex.Message });
+                _logger.LogError(ex, "An error occurred while retrieving orders.");
+                return StatusCode(500, new { Message = "An error occurred while retrieving orders" });
             }
         }
 
