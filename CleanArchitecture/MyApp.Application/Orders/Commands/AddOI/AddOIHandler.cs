@@ -14,7 +14,11 @@ namespace MyApp.Application.Orders.Commands.AddOI
     {
         private readonly IOrderRepository _orderRepository;
 
-        /// Constructor that injects the order repository dependency.
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddOIHandler"/> class.
+        /// Injects the order repository dependency.
+        /// </summary>
+        /// <param name="orderRepository">The repository used to manage order information.</param>
         public AddOIHandler(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
