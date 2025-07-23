@@ -14,7 +14,6 @@ namespace MyApp.Application.Orders.Queries.GetOrdersById
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
         }
 
-/*************  ✨ Windsurf Command ⭐  *************/
 /// <summary>
 /// Handles the <see cref="GetOrdersByIdRequestDto"/> and returns <see cref="GetOrdersByIdResponseDto"/>.
 /// </summary>
