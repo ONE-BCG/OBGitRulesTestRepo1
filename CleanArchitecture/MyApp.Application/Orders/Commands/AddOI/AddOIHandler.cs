@@ -23,8 +23,8 @@ namespace MyApp.Application.Orders.Commands.AddOI
         /// <summary>
         /// Handles the AddOIRequestDto by saving order information to the database.
         /// </summary>
-        /// <param name="">The request containing order information to be added.</param>
-        /// <param name="">Token to cancel the operation.</param>
+        /// <param name="request">The request containing order information to be added.</param>
+        /// <param name="cancellationToken">Token to cancel the operation.</param>
         /// <returns>Returns the response containing the newly created order info ID.</returns>
 
         public async Task<AddOIResponseDto> Handle(AddOIRequestDto request, CancellationToken cancellationToken)
