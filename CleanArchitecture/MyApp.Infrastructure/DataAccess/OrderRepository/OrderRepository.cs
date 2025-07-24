@@ -6,29 +6,41 @@ using System.Data;
 
 namespace MyApp.Infrastructure.DataAccess.OrderRepository
 {
+    /// <summary>
+    /// Repository implementation for order data access operations using SQL Server
+    /// </summary>
     public class OrderRepository : IOrderRepository
     {
         private readonly string _connectionString;
 
+        /// <summary>
+        /// Initializes repository with database connection string from configuration
+        /// </summary>
         public OrderRepository(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException("DefaultConnection", "Connection string not found in configuration.");
         }
+        /// <summary>
+        /// Retrieves all orders from database using stored procedure
+        /// </summary>
         public async Task<List<AllOrders>> GetAllOrdersAsync()
         {
             var orders = new List<AllOrders>();
+            
+            // Create database connection and command
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("spGetAllOrders", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
                     conn.Open();
 
+                    // Execute query and read results
                     using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
                         {
+                            // Map database columns to order object
                             var order = new AllOrders
                             {
                                 IOrderID = reader.GetInt32(reader.GetOrdinal("iOrderID")),
