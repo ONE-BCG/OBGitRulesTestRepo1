@@ -19,6 +19,7 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
         /// Gets all orders from the database
         /// ///     This method retrieves a list of all orders using the stored procedure spGetAllOrders.
         /// /// This method returns a list of AllOrders objects.
+        /// /// skldfmnklsndkfnsd
         /// </summary>
         Task<List<AllOrders>> GetAllOrdersAsync();
         
@@ -26,11 +27,14 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
         /// Gets a specific order by its ID
         /// ///     This method retrieves a single order using the stored procedure spGetOrdersById.
         /// /// This method returns an AllOrders object for the specified order ID.
+        /// /// adsfiuhausdhfjksadf
         /// </summary>
         Task<AllOrders> GetOrderByIdAsync(int orderId);
         
         /// <summary>
         /// Adds new order information and returns the generated ID
+        /// /// sakjdfnsdjkfnsdjkfn
+        /// /// sldkfmklsdmfklmskldmf
         /// </summary>
         Task<int> AddOrderInfoAsync(OIModel oimodel);
     }
