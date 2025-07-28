@@ -10,14 +10,15 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
     /// Repository contract for order data operations
     /// /// This interface defines methods for retrieving and manipulating order data
     /// in the underlying data store, such as a SQL Server database.
-    /// /// 
+    /// /// THis is test code for the OrderRepository class.
     /// /// This interface is used by the OrderRepository class to implement the actual data access logic.
     /// </summary>
     public interface IOrderRepository
     {
         /// <summary>
         /// Gets all orders from the database
-        /// ///     This method retrieves a list of all orders using the stored procedure spGetAllOrders.
+        /// /// This method retrieves a list of all orders using the stored procedure spGetAllOrders.
+        /// /// This is test code for the OrderRepository class.
         /// /// This method returns a list of AllOrders objects.
         /// </summary>
         Task<List<AllOrders>> GetAllOrdersAsync();
@@ -25,6 +26,7 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
         /// <summary>
         /// Gets a specific order by its ID
         /// ///     This method retrieves a single order using the stored procedure spGetOrdersById.
+        /// /// This is test code for the OrderRepository class.
         /// /// This method returns an AllOrders object for the specified order ID.
         /// </summary>
         Task<AllOrders> GetOrderByIdAsync(int orderId);
