@@ -12,6 +12,11 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
     /// Defines the interface for data access layer operations related to orders and order information
     /// Follows the Repository pattern for data abstraction
     /// </summary>
+    /// <summary>
+    /// Repository contract for order data operations
+    /// /// This interface defines methods for retrieving and manipulating order data
+    /// in the underlying data store, such as a SQL Server database.
+    /// </summary>
     public interface IOrderRepository
     {
         /// <summary>
@@ -31,6 +36,10 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
         /// This method calls the spGetAllOrders stored procedure to fetch all order records.
         /// Use this method when you need to display all orders or perform bulk operations.
         /// </remarks>
+        /// <summary>
+        /// Gets all orders from the database
+        /// ///     This method retrieves a list of all orders using the stored procedure spGetAllOrders.
+        /// </summary>
         Task<List<AllOrders>> GetAllOrdersAsync();
         
         /// <summary>
@@ -51,6 +60,11 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
         /// Ensure the orderId parameter is validated before calling this method.
         /// </remarks>
         /// <exception cref="ArgumentException">Thrown when orderId is less than or equal to zero</exception>
+        
+        /// <summary>
+        /// Gets a specific order by its ID
+        /// ///     This method retrieves a single order using the stored procedure spGetOrdersById.
+        /// </summary>
         Task<AllOrders> GetOrderByIdAsync(int orderId);
         
         /// <summary>
@@ -77,6 +91,10 @@ namespace MyApp.Infrastructure.DataAccess.OrderRepository
         /// </remarks>
         /// <exception cref="ArgumentNullException">Thrown when oimodel is null</exception>
         /// <exception cref="InvalidOperationException">Thrown when database operation fails</exception>
+        
+        /// <summary>
+        /// Adds new order information and returns the generated ID
+        /// </summary>
         Task<int> AddOrderInfoAsync(OIModel oimodel);
     }
 }
